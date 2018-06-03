@@ -15,8 +15,9 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
     console.log('a user connected');
-    socket.on('new-connection', function(){
-        console.log('new connection');
+    socket.on('new-connection', function(msg){
+        console.log('new connection:' + msg);
+        io.emit('new-connection', msg); 
     });
 });
 
