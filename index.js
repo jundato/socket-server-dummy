@@ -1,6 +1,13 @@
 var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var cors = require('cors');
+var server = require('http').Server(app);
+var io = require('socket.io')(server, { origins: '*:*'});
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
@@ -8,14 +15,11 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
     console.log('a user connected');
-    socket.on('disconnect', function(){
-        console.log('user disconnected');
-    });
-    socket.on('client_sendMessage', function(msg){
-        io.emit('client_sendMessage', msg);
+    socket.on('new-connection', function(){
+        console.log('new connection');
     });
 });
 
-http.listen(3000, function(){
+server.listen(3000, function(){
     console.log('listening on *:3000');
 });

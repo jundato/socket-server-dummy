@@ -24,11 +24,11 @@
       $(function () {
         var socket = io();
         $('form').submit(function(){
-          socket.emit('client_sendMessage', $('#m').val());
+          socket.emit('new-connection', $('#m').val());
           $('#m').val('');
           return false;
         });
-        socket.on('client_sendMessage', function(msg){
+        socket.on('new-connection', function(msg){
             $('#messages').append($('<li>').text(msg));
         });
       });
