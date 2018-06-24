@@ -25,7 +25,7 @@
       $(function () {
 
         var socketEvents = [{
-          name: 'new-call',
+          name: 'notification',
           body: { 
             name: "temporary room name", 
             organization: {
@@ -36,7 +36,7 @@
               name: "name" }]
             }
         }, {
-          name: 'new-call',
+          name: 'notification',
           body: { 
             name: "temporary room name", 
             organization: {
@@ -53,16 +53,6 @@
         $('#n').val(defaultEvent.name);
         $('#m').val(JSON.stringify(defaultEvent.body));
         var socket = io();
-<<<<<<< Updated upstream
-        $('form').submit(function(){
-          socket.emit('new-connection', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('new-connection', function(msg){
-            $('#messages').append($('<li>').text(msg));
-        });
-=======
         $('#sendMessage').click(function(){
           try {
             var message = JSON.parse($('#m').val());
@@ -80,8 +70,7 @@
           socket.on(sockeEvent.name, function(msg){
             $('#messages').append($('<li>').text( sockeEvent.name + ' -> ' + JSON.stringify(msg)));
           })
-        });  
->>>>>>> Stashed changes
+        });
       });
     </script>
   </body>
