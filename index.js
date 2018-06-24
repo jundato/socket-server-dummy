@@ -15,9 +15,18 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
     console.log('a user connected');
+<<<<<<< Updated upstream
     socket.on('new-connection', function(msg){
         console.log('new connection:' + msg);
         io.emit('new-connection', msg); 
+=======
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
+    socket.on('new-call', function(msg){
+        console.log('new call')
+        io.emit('new-call', msg);
+>>>>>>> Stashed changes
     });
 });
 
