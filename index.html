@@ -26,29 +26,19 @@
 
         var socketEvents = [{
           name: 'notification',
-          body: { 
-            name: "temporary room name", 
-            organization: {
-              id: '31'
-            },
-            recipients: [{ 
-              id: "string", 
-              name: "name" }]
-            }
-        }, {
-          name: 'notification',
-          body: { 
-            name: "temporary room name", 
-            organization: {
-              id: '31'
-            },
-            recipients: [{ 
-              id: "string", 
-              name: "name" }]
-            }
-        }];
+          body:
+          { 
+            callId: "186", 
+            organization: {"id": "31"}, 
+            room: "2739-1530477860438", 
+            startedAt: "2018-07-01T20: 44: 26.769Z", 
+            recipient: {id: "3033"}, 
+            initiator: {id: "2739", email: "virgilio@coachcare.com", lastName: "Dato", firstName : "Virgil"}, 
+            sentAt: "2018-07-01T20: 44: 26Z", 
+            type: "new-video-call"
+          }}];
 
-        var defaultEvent = socketEvents[1];
+        var defaultEvent = socketEvents[0];
 
         $('#n').val(defaultEvent.name);
         $('#m').val(JSON.stringify(defaultEvent.body));
